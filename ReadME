@@ -1,0 +1,9 @@
+This Project contains the CRUD operation of Employee.
+in Addition there is Authorization also.
+
+Used Technologies =>
+NodeJs,
+Fastify Framework,
+Postgresql Database.
+
+For Authentication,fastify-jwt is used.
