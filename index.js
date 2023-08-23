@@ -3,8 +3,8 @@ const fastify = require('fastify')({});
 const jwt = require('@fastify/jwt');
 const path = require('path');
 
-fastify.register(require('fastify-cors'));
-fastify.register(require('fastify-swagger'),{
+fastify.register(require('@fastify/cors'));
+fastify.register(require('@fastify/swagger'),{
 
 })
 const listenObject = {
