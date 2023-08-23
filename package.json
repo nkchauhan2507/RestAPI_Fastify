@@ -7,7 +7,7 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "fastify": "^4.21.0",
-    "fastify-autoload": "^3.13.0",
+    "fastify-autoload": "^3.13.0",  
     "fastify-cors": "^6.1.0",
     "fastify-swagger": "^5.2.0",
     "nodemon": "^3.0.1",
