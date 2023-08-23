@@ -5,7 +5,7 @@ const path = require('path');
 
 fastify.register(require('@fastify/cors'));
 fastify.register(require('@fastify/swagger'),{
-
+    
 })
 const listenObject = {
     port: 3000,
