@@ -1,14 +1,16 @@
 {
   "name": "employee_api",
   "main": "index.js",
-  "scripts":{
+  "scripts": {
     "start": "nodemon index.js"
   },
   "dependencies": {
+    "@fastify/jwt": "^5.0.0",
     "dotenv": "^16.3.1",
     "fastify": "^4.21.0",
-    "fastify-autoload": "^3.13.0",  
+    "fastify-autoload": "^3.13.0",
     "fastify-cors": "^6.1.0",
+    "fastify-jwt": "^4.2.0",
     "fastify-swagger": "^5.2.0",
     "nodemon": "^3.0.1",
     "pg": "^8.11.3",
