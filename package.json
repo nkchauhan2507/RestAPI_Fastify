@@ -15,7 +15,6 @@
     "fastify-cors": "^6.1.0",
     "fastify-jwt": "^4.2.0",
     "fastify-swagger": "^5.2.0",
-    "nodemon": "^3.0.1",
     "pg": "^8.11.3",
     "validator": "^13.11.0"
   }
