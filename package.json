@@ -5,6 +5,7 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
+    "@fastify/autoload": "^4.0.0",
     "@fastify/cors": "^7.0.0",
     "@fastify/jwt": "^5.0.0",
     "@fastify/static": "^5.0.0",
