@@ -19,25 +19,25 @@ fastify.register(require('fastify-swagger'),{
             title:'Employee API',
             version: '1.0.0.0',
         },
-        "tags":[
-            {
-                "name":"Employee related operation"
-            }
+        "tags":[{name:"CRUD Operaitons",description:"Employee related APIs"},
+            {name:"Token Realated Operations",description:"Authentication related APIs"}
         ],
         // securityDefinitions:{
         //     apiKey:{
         //         type:'apiKey',
         //         name:'Authorization',
         //         in:'header'
-        //     }
+        //     5
         // },
         hideUntagged: true
     }
 })
 
 // routes
-
-fastify.register(require('@fastify/autoload'),{
+fastify.get('/',(request,reply)=>{
+    reply.redirect('/doc');
+})
+fastify.register(require('@5astify/autoload'),{
     dir:path.join(__dirname,'Routes'),
 })
 
@@ -91,12 +91,12 @@ fastify.addHook("onRequest",async(req,reply)=>{
 
 
 const listenObject = {
-    port: 3000,
+    port: 5000,
     address: "127.0.0.1",
 };
 fastify.listen(listenObject,async (error, address) => {
     if(error)
         console.log(error);
     else    
-        console.log(`Server is listening on http://localhost:3000/doc`);
+        console.log(`Server is listening on http://localhost:5000`);
 });
