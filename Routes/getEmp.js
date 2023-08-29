@@ -10,10 +10,10 @@ module.exports = function (fastify, opts, next) {
         url: `/${GET_getEmp}/:empid`,
         schema: GET_retrieveEmpSchema,
         handler: async (request, response) => {
-            const { user, password, host, port, databse } = process.env;
+            const { user, password, host, port, database } = process.env;
             if (request.params.empid == '*') {
                 let query = `select firstname,lastname,mobileno,email from "Emp"`;
-                await runOnDB(query, user, password, host, port, databse)
+                await runOnDB(query, user, password, host, port, database)
                     .then((result) => {
                         if (result.rowCount > 0) {
                             response.send(result.rows);
@@ -31,13 +31,13 @@ module.exports = function (fastify, opts, next) {
             }
             else {
                 // check weather id exists or not
-                let query = `select id from "Emp" where id = '${request.params.id}`;
-                await runOnDB(query, user, password, host, port, databse)
+                let query = `select id from "Emp" where id = ${request.params.empid}`;
+                await runOnDB(query, user, password, host, port, database)
                     .then(async (result) => {
                         if (result.rowCount > 0) {
                             query = ``;
-                            query = `select firstname,lastname,mobileno,email from "Emp"`;
-                            await runOnDB(query, user, password, host, port, databse)
+                            query = `select firstname,lastname,mobileno,email from "Emp" where id = ${request.params.empid}`;
+                            await runOnDB(query, user, password, host, port, database)
                                 .then((result) => {
                                     if(result.rows!=0)
                                     {

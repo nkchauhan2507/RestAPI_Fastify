@@ -12,7 +12,7 @@ fastify.register(require('@fastify/static'),{
 
 fastify.register(require('fastify-swagger'),{
     exposeRoute: true,
-    // routePrefix:'documentation',
+    routePrefix:'/doc',
     swagger:{
         schemes: ['http'],
         info:{
@@ -98,5 +98,5 @@ fastify.listen(listenObject,async (error, address) => {
     if(error)
         console.log(error);
     else    
-        console.log(`Server is listening on http://localhost:3000/`);
+        console.log(`Server is listening on http://localhost:3000/doc`);
 });
