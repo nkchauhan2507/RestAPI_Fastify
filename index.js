@@ -33,15 +33,17 @@ fastify.register(require('fastify-swagger'),{
     }
 })
 
-// routes
+// to load swagger at root(/) URL
 fastify.get('/',{
     schema:{
-        hide:true,
+        hide:true, // it'll hide this API on Sever..
     },
     handler:(request,reply)=>{
         reply.redirect('/doc');
     }
 })
+
+// Load all routes
 fastify.register(require('@fastify/autoload'),{
     dir:path.join(__dirname,'Routes'),
 })
@@ -103,5 +105,5 @@ fastify.listen(listenObject,async (error, address) => {
     if(error)
         console.log(error);
     else    
-        console.log(`Server is listening on http://localhost:5000`);
+        console.log(`Server is listening on http://localhost:5000/`);
 })
