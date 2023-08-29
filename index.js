@@ -34,8 +34,13 @@ fastify.register(require('fastify-swagger'),{
 })
 
 // routes
-fastify.get('/',(request,reply)=>{
-    reply.redirect('/doc');
+fastify.get('/',{
+    schema:{
+        hide:true,
+    },
+    handler:(request,reply)=>{
+        reply.redirect('/doc');
+    }
 })
 fastify.register(require('@5astify/autoload'),{
     dir:path.join(__dirname,'Routes'),
@@ -98,5 +103,14 @@ fastify.listen(listenObject,async (error, address) => {
     if(error)
         console.log(error);
     else    
-        console.log(`Server is listening on http://localhost:5000`);
-});
+        console.log(`Server is listening on http://localhost:5000{
+    schema:{
+        handler:,,
+        handler:
+    });{
+    }}`);a:{,,
+        handler:
+            handler:
+        }
+        hide:true,
+}
