@@ -60,7 +60,6 @@ module.exports = function (fastify, opts, next) {
                     .catch((err) => {
                         response.send(err);
                     })
-
             }
         }
     })
