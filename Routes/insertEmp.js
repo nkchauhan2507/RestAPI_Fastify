@@ -51,10 +51,59 @@ module.exports = function (fastify,opts,next){
                         throw err;
                     })
 
+                    // check weather mobileno already exists..
+                    query =``;
+                    query = `select mobileno from "Emp" where mobileno=${ContactNo}`;
+                    await runOnDB(query,user, password, host, port, database)
+                    .then((result)=>{
+                        if(result.rowCount > 0){
+                            throw ({
+                                statusCode:422,
+                                error:"Unprocessable Entity",
+                                message:"Entered contact number already exist.."
+                            });
+                        }
+                    })
+                    .catch(err=>{
+                        throw err;
+                    })
+
+                    // check weather Email already exists..
+                    query =``;
+                    query = `select email from "Emp" where email=${EmailId}`;
+                    await runOnDB(query,user, password, host, port, database)
+                    .then((result)=>{
+                        if(result.rowCount > 0){
+                            throw ({
+                                statusCode:422,
+                                error:"Unprocessable Entity",
+                                message:"Entered Email ID already exist.."
+                            });
+                        }
+                    })
+                    .catch(err=>{
+                        throw err;
+                    })
+
+                    query =``;
+                    query = `insert into "Emp"(firstname,lastname,mobileno,email) values
+                    ('${firstName}','${lastName}',${ContactNo},'${EmailId}')`;
+                    await runOnDB(query,user, password, host, port, database)
+                    .then((result)=>{
+                        res.code(200).send({
+                            statusCode:200,
+                            message:"Data Inserted Successfully."
+                        });
+                    })
+                    .catch(err=>{
+                        throw err;
+                    })
                 }
             } catch (error) {
                 return res.code(error.statusCode).send(error);
             }
         }
     })
+
+    next();
 }
