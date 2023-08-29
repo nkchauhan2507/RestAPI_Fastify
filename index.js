@@ -42,7 +42,7 @@ fastify.get('/',{
         reply.redirect('/doc');
     }
 })
-fastify.register(require('@5astify/autoload'),{
+fastify.register(require('@fastify/autoload'),{
     dir:path.join(__dirname,'Routes'),
 })
 
@@ -103,14 +103,5 @@ fastify.listen(listenObject,async (error, address) => {
     if(error)
         console.log(error);
     else    
-        console.log(`Server is listening on http://localhost:5000{
-    schema:{
-        handler:,,
-        handler:
-    });{
-    }}`);a:{,,
-        handler:
-            handler:
-        }
-        hide:true,
-}
+        console.log(`Server is listening on http://localhost:5000`);
+})
