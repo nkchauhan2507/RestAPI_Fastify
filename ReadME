@@ -7,3 +7,11 @@ Fastify Framework,
 Postgresql Database.
 
 For Authentication,fastify-jwt is used.
+
+
+
+Here are mentioned few changes to be made if you are using this APIs.
+
+=> Open "Config.env" file and change the Database details according to your specification.
+=> sometimes You also need to update Node modules if require 
+
