@@ -19,7 +19,8 @@ fastify.register(require('fastify-swagger'),{
             title:'Employee API',
             version: '1.0.0.0',
         },
-        "tags":[{name:"CRUD Operaitons",description:"Employee related APIs"},
+        "tags":[
+            {name:"CRUD Operaitons",description:"Employee related APIs"},
             {name:"Token Realated Operations",description:"Authentication related APIs"}
         ],
         // securityDefinitions:{
