@@ -10,7 +10,7 @@ fastify.register(require('@fastify/static'),{
     root: path.join(__dirname,'documentation')
 });
 
-fastify.register(require('fastify-swagger'),{
+fastify.register(require('@fastify/swagger'),{
     exposeRoute: true,
     routePrefix:'/doc',
     swagger:{
@@ -59,48 +59,48 @@ fastify.register(require('@fastify/autoload'),{
 //     verify : {issuer:'nk.tld'}
 // })
 
-fastify.addHook("onRequest",async(req,reply)=>{
-    try {
-        if(req.raw.url.indexOf(`/getToken`) > -1
-        ||  req.rw.url.indexOf(`/generateToken`) > -1){
-            return;
-        }
-        var urlLength = req.raw.url.length;
-        if(urlLength > 6501){
-            reply.code(400).send({
-                statusCode:400,
-                error:"Bad Request",
-                message:`Get URL can't be length of more than 6500 character. `
-            });
-            return;
-        }
-        if(req.raw.url.indexOf(`/getEmp`) > -1
-        || req.raw.url.indexOf(`/insertEmp`) > -1
-        || req.raw.url.indexOf(`/updateEmp`) > -1
-        || req.raw.url.indexOf(`/updateAllEmp`) > -1
-        || req.raw.url.indexOf(`/deleteEmp`) > -1
-        ){
-            await req.jwtVerify()
-            .then((decoded)=>{
-                console.log(decoded);
-            })
-            .catch(err=>{
-                let error = {
-                    statusCode:500,
-                    message:"Invalid Token.Enter valid API's Token"
-                };
-                reply.code(error.statusCode).send(error);
-            })
-        }
-    } catch (error) {
-        reply.code(error.statusCode).send(error);
-    }
-})
+// fastify.addHook("onRequest",async(req,reply)=>{
+//     try {
+//         if(req.raw.url.indexOf(`/getToken`) > -1
+//         ||  req.rw.url.indexOf(`/generateToken`) > -1){
+//             return;
+//         }
+//         var urlLength = req.raw.url.length;
+//         if(urlLength > 6501){
+//             reply.code(400).send({
+//                 statusCode:400,
+//                 error:"Bad Request",
+//                 message:`Get URL can't be length of more than 6500 character. `
+//             });
+//             return;
+//         }
+//         if(req.raw.url.indexOf(`/getEmp`) > -1
+//         || req.raw.url.indexOf(`/insertEmp`) > -1
+//         || req.raw.url.indexOf(`/updateEmp`) > -1
+//         || req.raw.url.indexOf(`/updateAllEmp`) > -1
+//         || req.raw.url.indexOf(`/deleteEmp`) > -1
+//         ){
+//             await req.jwtVerify()
+//             .then((decoded)=>{
+//                 console.log(decoded);
+//             })
+//             .catch(err=>{
+//                 let error = {
+//                     statusCode:500,
+//                     message:"Invalid Token.Enter valid API's Token"
+//                 };
+//                 reply.code(error.statusCode).send(error);
+//             })
+//         }
+//     } catch (error) {
+//         reply.code(error.statusCode).send(error);
+//     }
+// })
 
 
 const listenObject = {
     port: 5000,
-    address: "127.0.0.1",
+    address: "localhost",
 };
 fastify.listen(listenObject,async (error, address) => {
     if(error)
