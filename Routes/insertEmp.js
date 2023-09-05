@@ -43,7 +43,15 @@ module.exports = function (fastify,opts,next){
                         return res.code(422).send(errMsg);
                     }
                     // if Table is not exist it'll create
-                    let query = ``;
+                    let query = `CREATE TABLE IF NOT EXISTS public."Emp"
+                    (
+                        id serial NOT NULL,
+                        firstname text,
+                        lastname text,
+                        mobileno numeric(10,0),
+                        email text,
+                        CONSTRAINT "Emp_pkey" PRIMARY KEY (id)
+                    )`;
                     await runOnDB(query,user, password, host, port, database)
                     .then(()=>{
                     })
@@ -70,7 +78,7 @@ module.exports = function (fastify,opts,next){
 
                     // check weather Email already exists..
                     query =``;
-                    query = `select email from "Emp" where email=${EmailId}`;
+                    query = `select email from "Emp" where email='${EmailId}'`;
                     await runOnDB(query,user, password, host, port, database)
                     .then((result)=>{
                         if(result.rowCount > 0){
@@ -100,7 +108,7 @@ module.exports = function (fastify,opts,next){
                     })
                 }
             } catch (error) {
-                return res.code(error.statusCode).send(error);
+                return res.send(error);
             }
         }
     })

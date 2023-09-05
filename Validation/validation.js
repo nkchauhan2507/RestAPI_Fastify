@@ -1,3 +1,5 @@
+const validator = require('validator');
+
 function validateMobileNo(number)
 {
     if(/[0-9]{10}$/.test(number))

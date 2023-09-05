@@ -1,6 +1,6 @@
 const GET_retrieveEmpSchema = {
     description: 'getting user',
-    tags: ['Employee related operation'],
+    tags: ['CRUD Operaitons'],
     summary: '1.0.0',
     params: {
         empid: {
@@ -16,7 +16,7 @@ const GET_retrieveEmpSchema = {
 
 const POST_insertEmpSchema = {
     description: 'This API is useful for inserting Employee records to the Database',
-    tags: ['Employee related operation'],
+    tags: ['CRUD Operaitons'],
     summary: '1.0.0',
     body: {
         type: 'object',
@@ -30,7 +30,7 @@ const POST_insertEmpSchema = {
                 description: 'Please provide LastName'
             },
             ContactNo: {
-                type: 'string',
+                type: 'integer',
                 description: 'Please provide Contact Number'
             },
             EmailId: {
@@ -49,7 +49,7 @@ const POST_insertEmpSchema = {
 }
 const deleteEmpSchema = {
     description: 'This API is useful for inserting Employee records to the Database',
-    tags: ['Employee related operation'],
+    tags: ['CRUD Operaitons'],
     summary: '1.0.0',
     params: {
         id: {
@@ -67,7 +67,7 @@ const deleteEmpSchema = {
 
 const PATCH_updateEmpSchema = {
     description: 'This API is useful for updating few fields of Employee records by given ID',
-    tags: ['Employee related operation'],
+    tags: ['CRUD Operaitons'],
     summary: '1.0.0',
     params: {
         id: {
@@ -99,7 +99,7 @@ const PATCH_updateEmpSchema = {
 
 const PUT_updateEmpSchema = {
     description: 'This API is useful for updating All fields of Employee records by given ID',
-    tags: ['Employee related operation'],
+    tags: ['CRUD Operaitons'],
     summary: '1.0.0',
     params: {
         id: {

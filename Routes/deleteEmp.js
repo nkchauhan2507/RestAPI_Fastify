@@ -10,7 +10,7 @@ module.exports = function (fastify,opts,next){
         url:`/${DELETE_deleteEmp}/:id`,
         schema: deleteEmpSchema,
         handler: async (req,res)=>{
-            const {firstName,lastName,ContactNo,EmailId} = req.body;
+           // const {firstName,lastName,ContactNo,EmailId} = req.body;
             
             try {
                 const { user, password, host, port, database } = process.env;
@@ -46,7 +46,7 @@ module.exports = function (fastify,opts,next){
                 })
 
             } catch (error) {
-                res.code(error.statusCode).send(error);
+                res.send(error);
             }
         }
     })
