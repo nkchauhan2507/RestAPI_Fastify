@@ -1,4 +1,7 @@
-const validator = require('validator');
+
+function validateInputValue(fname,lname,email,mobileno){
+
+}const validator = require('validator');
 
 function validateMobileNo(number)
 {
@@ -23,8 +26,26 @@ function validateEmail(mail){
         });
     }
 }
+function validateInputValue(fname,lname,mobileno,email){
+    if(fname === 'string' || lname === 'string' || mobileno === 0 || email === 'string')
+    {
+        return ({
+            statusCode:400,
+            error:"Bad Request",
+            message:"Enter valid values to be Insert."
+        });
+    }
+    else if(fname === "" || lname === "" || mobileno === 0 || email === "")
+    {
+        return ({
+            statusCode:400,
+            error:"Bad Request",
+            message:"Values can't be Null"
+        });
+    }
+}
 module.exports = {
     validateMobileNo,
     validateEmail,
-
+    validateInputValue,
 }

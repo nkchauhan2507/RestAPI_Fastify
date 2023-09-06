@@ -37,6 +37,7 @@ module.exports = function (fastify,opts,next){
                     if(errMsg){
                         return res.code(422).send(errMsg);
                     }
+                    // validate Email Id
                     errMsg =``;
                     errMsg = validateEmail(EmailId);
                     if(errMsg){

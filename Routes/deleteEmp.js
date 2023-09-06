@@ -2,7 +2,6 @@ const { deleteEmpSchema } = require('../Schema/schema');
 require("dotenv").config({ "path": `${__dirname}/config.env` });
 const { DELETE_deleteEmp } = require('../URL');
 const { runOnDB } = require('../connection');
-const {validateMobileNo,validateEmail} = require('../Validation/validation');
 
 module.exports = function (fastify,opts,next){
     fastify.route({
